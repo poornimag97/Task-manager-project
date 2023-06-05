@@ -1,0 +1,35 @@
+<div class="formcontainer">
+    <form action="/task-manager/task" id="form" method="post">
+    <h1>Task manager</h1>
+    <label for="task">Task</label>
+    <input type="text" name="task" id="task">
+    <button type="submit">Add Task</button>
+    </form>
+</div>
+
+
+
+    
+    
+  <h3>List of Tasks</h3>
+  <div class="container">
+    <table>
+        <tr>
+            <th>Taskname</th>
+            <th>Updatetask</th>
+            <th>Deletetask</th>
+        </tr>
+        {{#each tasks}}
+        <tr>
+            <td>{{task}}</td>
+            <td><a href="/task-manager/task/{{_id}}">Update</a></td>
+            <td>
+                <form action="/task-manager/task/{{_id}}?_method=DELETE" method="POST" enctype="application/x-www-form-urlencoded">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+         </table>
+      </div>
